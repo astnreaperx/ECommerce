@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_14_190334) do
+ActiveRecord::Schema.define(version: 2020_11_14_202647) do
+
+  create_table "Products", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "price"
+    t.integer "delivery_cost"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "woodworker_id", null: false
+    t.index ["woodworker_id"], name: "index_products_on_Woodworker_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -57,15 +68,6 @@ ActiveRecord::Schema.define(version: 2020_11_14_190334) do
     t.index ["product_id"], name: "index_product_orders_on_product_id"
   end
 
-  create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.integer "price"
-    t.integer "delivery_cost"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "provinces", force: :cascade do |t|
     t.string "name"
     t.integer "location"
@@ -84,6 +86,7 @@ ActiveRecord::Schema.define(version: 2020_11_14_190334) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "Products", "Woodworkers", column: "woodworker_id"
   add_foreign_key "orders", "customers"
   add_foreign_key "orders", "provinces"
   add_foreign_key "product_categories", "categories"

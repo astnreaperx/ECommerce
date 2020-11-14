@@ -13,10 +13,10 @@ Category.delete_all
 Province.delete_all
 
 Customer.delete_all
-Woodworker.delete_all
 
 Order.delete_all
 Product.delete_all
+Woodworker.delete_all
 
 cat = Category.create(
   name:        "Test",
@@ -31,9 +31,38 @@ guy = Woodworker.create(
   address:    "Test"
 )
 
-guy.products.create(
-  name:          "",
-  description:   "",
+Woodworker.create(
+  user_name:  "Test",
+  first_name: "Test",
+  last_name:  "Test",
+  shop_name:  "Test",
+  address:    "Test"
+)
+
+prod = Product.create(
+  name:          "te",
+  description:   "st",
   price:         10,
   delivery_cost: 10
 )
+
+
+pro2 = guy.products.create(
+  name:          "teasdasd",
+  description:   "st",
+  price:         10,
+  delivery_cost: 10
+)
+
+prod = guy.products.create(
+  name:          "te",
+  description:   "st",
+  price:         10,
+  delivery_cost: 10
+)
+puts prod.name
+puts pro2.name
+
+puts Product.count
+puts Woodworker.count
+puts Category.count
