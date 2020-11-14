@@ -1,0 +1,2 @@
+class Woodworker < ApplicationRecord
+end
