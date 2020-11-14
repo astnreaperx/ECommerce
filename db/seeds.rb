@@ -18,7 +18,22 @@ Woodworker.delete_all
 Order.delete_all
 Product.delete_all
 
+cat = Category.create(
+  name:        "Test",
+  description: "Test"
+)
 
-Category.create(
-    
+guy = Woodworker.create(
+  user_name:  "Test",
+  first_name: "Test",
+  last_name:  "Test",
+  shop_name:  "Test",
+  address:    "Test"
+)
+
+guy.products.create(
+  name:          "",
+  description:   "",
+  price:         10,
+  delivery_cost: 10
 )
