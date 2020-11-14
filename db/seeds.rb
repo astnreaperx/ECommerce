@@ -23,7 +23,7 @@ cat = Category.create(
   description: "Test"
 )
 
-guy = Woodworker.create(
+guy = Woodworker.create!(
   user_name:  "Test",
   first_name: "Test",
   last_name:  "Test",
@@ -31,38 +31,21 @@ guy = Woodworker.create(
   address:    "Test"
 )
 
-Woodworker.create(
-  user_name:  "Test",
-  first_name: "Test",
-  last_name:  "Test",
-  shop_name:  "Test",
-  address:    "Test"
-)
-
-prod = Product.create(
-  name:          "te",
-  description:   "st",
-  price:         10,
-  delivery_cost: 10
-)
-
-
-pro2 = guy.products.create(
+pro2 = guy.products.create!(
   name:          "teasdasd",
   description:   "st",
   price:         10,
   delivery_cost: 10
 )
 
-prod = guy.products.create(
-  name:          "te",
-  description:   "st",
-  price:         10,
-  delivery_cost: 10
+pro2.categories.create!(
+  name:        "Test",
+  description: "Test"
 )
-puts prod.name
-puts pro2.name
+puts pro2.categories.first.name
 
 puts Product.count
 puts Woodworker.count
 puts Category.count
+puts ProductCategory.count
+puts ProductOrder.count
