@@ -1,2 +1,13 @@
-<p> <%= product.name %> </p>
-<p> <%= link_to product.name , products_path %> </p>
+
+<div class="">
+    <h3> <%= link_to product.name , product %> </h3>
+    <h5>Description: <%= product.description %> </h5>
+    <h5>Price: <%= product.price %> </h5>
+    <h5>Deliver: <%= product.delivery_cost %> </h5>
+    <h5>WoodWorker: <%= product.woodworker.first_name %> </h5>
+    <ul>
+        <li><%= link_to product.categories[0].name, category_path(product.categories[0].id)%></li>
+        <li><%= link_to product.categories[1].name, category_path(product.categories[1].id)%></li>
+    </ul>
+</div>
+
