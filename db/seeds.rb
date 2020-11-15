@@ -5,8 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
 require "faker"
+
 AdminUser.delete_all
 ProductCategory.delete_all
 ProductOrder.delete_all
@@ -19,6 +19,10 @@ Customer.delete_all
 Order.delete_all
 Product.delete_all
 Woodworker.delete_all
+
+if Rails.env.development?
+  AdminUser.create!(email: "admin@example.com", password: "password", password_confirmation: "password")
+end
 
 # Generate 4 Categories
 categories = ["Victorian", "Modern", "Vintage", "Traditional"]
@@ -44,8 +48,8 @@ end
 # Generate 100 Products with woodworker and categories
 100.times do |p|
   prod = Product.create(
-    name:          "teasdasd",
-    description:   "st",
+    name:          Faker::Space.moon,
+    description:   Faker::Lorem.paragraph,
     price:         10,
     delivery_cost: 10,
     woodworker:    Woodworker.order("RANDOM()").first,
@@ -54,26 +58,26 @@ end
   puts prod.errors.messages
 end
 
-guy = Woodworker.create!(
-  user_name:  "Test",
-  first_name: "Test",
-  last_name:  "Test",
-  shop_name:  "Test",
-  address:    "Test"
-)
+30.times do |cu|
+  fname = Faker::Name.first_name
+  lname = Faker::Name.last_name
+  user = fname + "." + lname
+  email = user + "@user.com"
+  Customer.create(
+    user_name:  user,
+    first_name: fname,
+    last_name:  lname,
+    email:      email,
+    password:   "password",
+    address:    Faker::Address.full_address
+  )
+end
 
-pro2 = guy.products.create!
-
-pro2.categories.create!(
-  name:        "Test",
-  description: "Test"
-)
-
-puts "Product: #{Product.count}"
 puts "Woodworkers: #{Woodworker.count}"
+puts "Customers: #{Customer.count}"
+
 puts "Categories: #{Category.count}"
+puts "Product: #{Product.count}"
+
 puts "Product Categories: #{ProductCategory.count}"
 puts "Product Orders: #{ProductOrder.count}"
-if Rails.env.development?
-  AdminUser.create!(email: "admin@example.com", password: "password", password_confirmation: "password")
-end

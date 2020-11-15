@@ -1,0 +1,2 @@
+class WoodworkerController < ApplicationController
+end
