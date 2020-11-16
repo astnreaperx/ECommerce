@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  root to: "page#index", as: "home"
-  get "/page", to: "page#index", as: "Home"
+  root to: "page#index", as: "page"
+  get "/home", to: "page#index", as: "home"
 
   get "/products", to: "products#index", as: "products"
   get "/product/:id", to: "products#show", as: "product"
@@ -14,4 +14,7 @@ Rails.application.routes.draw do
 
   get "/woodworkers", to: "woodworkers#index", as: "woodworkers"
   get "/woodworker/:id", to: "woodworkers#show", as: "woodworker"
+
+  get "/contact", to: "page#contact", as: "contact"
+  get "/about", to: "page#about", as: "about"
 end
