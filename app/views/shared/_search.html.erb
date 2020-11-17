@@ -1,17 +1,5 @@
-<h1>Hello World</h1>
-
-<%= debug session[:cart] %>
-
 <%= form_tag("/home",local: true, method: "get") do %>
   <%= label_tag(:search, "Search for:") %>
   <%= text_field_tag(:search) %>
   <%= submit_tag("Search") %>
 <% end %>
-
-<% if @products.present? %>
-    <%= render @products %>
-<% end %>
-
-
-
-<%= paginate @products %>

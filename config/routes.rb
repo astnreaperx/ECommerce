@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   get "/categories", to: "categories#index", as: "categories"
   get "/category/:id", to: "categories#show", as: "category"
 
-  get "/woodworkers", to: "woodworkers#index", as: "woodworkers"
-  get "/woodworker/:id", to: "woodworkers#show", as: "woodworker"
+  get "/woodworkers", to: "woodworker#index", as: "woodworkers"
+  get "/woodworker/:id", to: "woodworker#show", as: "woodworker"
 
   get "/contact", to: "page#contact", as: "contact"
   get "/about", to: "page#about", as: "about"

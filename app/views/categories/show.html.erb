@@ -1,4 +1,9 @@
 <%= render @category %>
 
+<% @category.products.each do |prod| %>
+    <p> <%= link_to prod.name, product_path %> </p>
+<% end %>
+
+
 
 <h4> <%= link_to "back", categories_path %> </h4>

@@ -19,10 +19,17 @@ Customer.delete_all
 Order.delete_all
 Product.delete_all
 Woodworker.delete_all
+Owner.delete_all
 
 if Rails.env.development?
   AdminUser.create!(email: "admin@example.com", password: "password", password_confirmation: "password")
 end
+
+Owner.create(
+  website_name: "Pine and Soul",
+  owner_name: "Jerry Smith",
+  website_description: "We are new here to the digital woodworking game, but we have high hopes and a high ambition to change that. Woodworking is one of those industries that has been around forever and the business model has not changed. That is where we come in, we want to change the traditional model to a semi-traditional model. We still strive for that traditional quality but are delivered in a streamlined, efficient, and convenient way. The traditional method tends to be slow and very expensive, our model will hope to eliminate the downsides of the traditional model."
+)
 
 # Generate 4 Categories
 categories = ["Victorian", "Modern", "Vintage", "Traditional"]

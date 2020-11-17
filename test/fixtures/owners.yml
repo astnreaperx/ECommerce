@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  website_name: MyString
+  owner_name: MyString
+  website_description: MyString
+
+two:
+  website_name: MyString
+  owner_name: MyString
+  website_description: MyString

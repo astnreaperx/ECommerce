@@ -12,4 +12,8 @@ class PageController < ApplicationController
                      Woodworker.order("id ASC").page params[:page]
                    end
   end
+
+  def about
+    @owner = Owner.last
+  end
 end
