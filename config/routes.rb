@@ -3,11 +3,14 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  root to: "page#index", as: "page"
+  root to: "page#index"
   get "/home", to: "page#index", as: "home"
 
   get "/products", to: "products#index", as: "products"
   get "/product/:id", to: "products#show", as: "product"
+
+  post 'products/add_to_cart/:id', to: 'products#add_to_cart', as: 'add_to_cart'
+  delete 'products/remove_from_cart/:id', to: 'products#remove_from_cart', as: 'remove_from_cart'
 
   get "/categories", to: "categories#index", as: "categories"
   get "/category/:id", to: "categories#show", as: "category"
