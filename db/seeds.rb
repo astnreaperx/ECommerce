@@ -65,7 +65,6 @@ end
   puts prod.errors.messages
   download_image = open(URI.open("https://source.unsplash.com/400x400/?furniture"))
   prod.image.attach(io: download_image, filename: "IMG#{prod.id}.jpg")
-  sleep(1)
 end
 
 30.times do |cu|

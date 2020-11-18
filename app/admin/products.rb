@@ -19,10 +19,12 @@ ActiveAdmin.register Product do
     f.semantic_errors(*f.object.errors.keys)
 
     f.inputs "Product" do
+      f.input :id
       f.input :name
       f.input :description
       f.input :price
       f.input :delivery_cost
+      f.input :woodworker_id, as: :select, collection: Woodworker.all
       f.has_many :product_categories, allow_destroy: true do |n_f|
         n_f.input :category
       end

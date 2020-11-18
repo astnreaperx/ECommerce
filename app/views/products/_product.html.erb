@@ -12,6 +12,7 @@
         <li><%= link_to product.categories[0].name, category_path(product.categories[0].id)%></li>
         <li><%= link_to product.categories[1].name, category_path(product.categories[1].id)%></li>
     </ul>
+    <p>  </p>
     <p> <%= link_to 'add to cart', add_to_cart_path(product.id), method: :post %> </p>
 </div>
 
