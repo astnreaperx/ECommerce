@@ -1,6 +1,14 @@
 <h1>Hello World</h1>
 
-<%= debug session[:cart] %>
+<detail>
+    <summary> Shopping Cart </summary>
+    <ul>
+        <% session[:cart].each do |prod| %>
+            <li><%= Product.find(prod).name %></li>
+        <% end %>
+    </ul>
+
+</detail>
 
 
 <h3>Recent Products</h3>

@@ -1,4 +1,12 @@
-<%= debug session[:cart] %>
+<detail>
+    <summary> Shopping Cart </summary>
+    <ul>
+        <% @cart.each do |prod| %>
+            <li><%= prod.name%></li>
+        <% end %>
+    </ul>
+
+</detail>
 
 <%= form_tag(products_path ,local: true, method: "get") do %>
   <%= label_tag(:search, "Search for:") %>
