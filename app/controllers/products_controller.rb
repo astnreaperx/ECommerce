@@ -9,12 +9,6 @@ class ProductsController < ApplicationController
       Product.order("id ASC").page params[:page]
     end
 
-    @woodworkers = if params[:search]
-            Woodworker.search(params[:search]).order("id ASC").page params[:page]
-          else
-            Woodworker.order("id ASC").page params[:page]
-          end
-
     session[:visit_count] ||= 0
     session[:visit_count] += 1
     @visit_count = session[:visit_count]

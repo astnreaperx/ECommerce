@@ -2,12 +2,13 @@
 
 <%= debug session[:cart] %>
 
-<%= form_tag("/home",local: true, method: "get") do %>
-  <%= label_tag(:search, "Search for:") %>
-  <%= text_field_tag(:search) %>
-  <%= submit_tag("Search") %>
+
+<h3>Recent Products</h3>
+<% if @recent_products.present? %>
+    <%= render partial: '/products/product', collection: @recent_products%>%
 <% end %>
 
+<h3>All Products</h3>
 <% if @products.present? %>
     <%= render @products %>
 <% end %>

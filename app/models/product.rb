@@ -9,6 +9,6 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :product_categories, allow_destroy: true
 
   def self.search(search)
-    where("name LIKE ?", "%#{search}%")
+    where("name LIKE ? OR description LIKE ?", "%#{search}%","%#{search}%")
   end
 end
