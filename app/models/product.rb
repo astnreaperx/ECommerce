@@ -8,6 +8,8 @@ class Product < ApplicationRecord
   has_many :categories, through: :product_categories
   accepts_nested_attributes_for :product_categories, allow_destroy: true
 
+  has_one_attached :image
+
   def self.search(search)
     where("name LIKE ? OR description LIKE ?", "%#{search}%","%#{search}%")
   end

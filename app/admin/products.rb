@@ -13,7 +13,7 @@ ActiveAdmin.register Product do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  permit_params :name, :description, :price, :delivery_cost, product_categories_attributes: %i[id product_id category_id _destroy]
+  permit_params :name, :description, :price, :delivery_cost, :image, product_categories_attributes: %i[id product_id category_id _destroy]
 
   form do |f|
     f.semantic_errors(*f.object.errors.keys)
@@ -26,6 +26,7 @@ ActiveAdmin.register Product do
       f.has_many :product_categories, allow_destroy: true do |n_f|
         n_f.input :category
       end
+      f.input :image, as: :file
     end
     f.actions
   end

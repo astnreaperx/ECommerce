@@ -5,6 +5,9 @@
     <h5>Price: <%= product.price %> </h5>
     <h5>Deliver: <%= product.delivery_cost %> </h5>
     <h5>WoodWorker: <%= product.woodworker.first_name %> </h5>
+    <% if product.image.present? %>
+        <%= image_tag product.image %>
+    <% end %>
     <ul>
         <li><%= link_to product.categories[0].name, category_path(product.categories[0].id)%></li>
         <li><%= link_to product.categories[1].name, category_path(product.categories[1].id)%></li>
