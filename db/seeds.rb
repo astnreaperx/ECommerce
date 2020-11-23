@@ -71,7 +71,6 @@ end
   fname = Faker::Name.first_name
   lname = Faker::Name.last_name
   user = fname + "." + lname
-  email = user + "@user.com"
   Customer.create(
     user_name:  user,
     first_name: fname,
@@ -81,6 +80,8 @@ end
     address:    Faker::Address.full_address
   )
 end
+
+Customer.delete_all
 
 puts "Woodworkers: #{Woodworker.count}"
 puts "Customers: #{Customer.count}"
