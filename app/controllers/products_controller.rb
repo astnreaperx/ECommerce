@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-  before_action :initialize_session
   before_action :increment_visit_count, only: %i[index]
   before_action :load_cart
 

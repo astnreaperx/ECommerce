@@ -6,3 +6,15 @@
     <li><%= link_to "About", '/about' %></li>
     <li><%= link_to "Contact", '/contact' %></li>
 </ul>
+
+<div>
+    <% if customer_signed_in? %>
+    <li>
+    <%= link_to('Logout', destroy_customer_session_path, method: :delete) %>
+    </li>
+    <% else %>
+    <li>
+    <%= link_to('Login', new_customer_session_path) %>
+    </li>
+    <% end %>
+</div>

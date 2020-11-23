@@ -21,4 +21,6 @@ Rails.application.routes.draw do
 
   get "/contact", to: "page#contact", as: "contact"
   get "/about", to: "page#about", as: "about"
+
+
 end
