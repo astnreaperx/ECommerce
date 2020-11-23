@@ -54,34 +54,20 @@ end
 
 # Generate 100 Products with woodworker and categories
 100.times do |p|
+  furniture = Faker::House.furniture
   prod = Product.create(
-    name:          Faker::Space.moon,
+    name:          Faker::Space.moon + "-" + furniture,
     description:   Faker::Lorem.paragraph,
-    price:         10,
-    delivery_cost: 10,
+    price:         Faker::Number.decimal(l_digits: 3, r_digits: 2),
+    delivery_cost: Faker::Number.decimal(l_digits: 2, r_digits: 2),
     woodworker:    Woodworker.order("RANDOM()").first,
     categories:    Category.order("RANDOM()").first(2)
   )
   puts prod.errors.messages
-  download_image = open(URI.open("https://source.unsplash.com/400x400/?furniture"))
+  download_image = open(URI.open("https://source.unsplash.com/400x400/?" + Faker::House.furniture))
   prod.image.attach(io: download_image, filename: "IMG#{prod.id}.jpg")
 end
 
-30.times do |cu|
-  fname = Faker::Name.first_name
-  lname = Faker::Name.last_name
-  user = fname + "." + lname
-  Customer.create(
-    user_name:  user,
-    first_name: fname,
-    last_name:  lname,
-    email:      email,
-    password:   "password",
-    address:    Faker::Address.full_address
-  )
-end
-
-Customer.delete_all
 
 puts "Woodworkers: #{Woodworker.count}"
 puts "Customers: #{Customer.count}"

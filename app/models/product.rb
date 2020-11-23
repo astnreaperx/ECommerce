@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   # name, description, price, delivery_cost
+  validates :name, :description, :price, :delivery_cost, presence: true
   max_paginates_per 20
 
   belongs_to :woodworker

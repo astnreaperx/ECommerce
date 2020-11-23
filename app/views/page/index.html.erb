@@ -4,7 +4,7 @@
     <summary> Shopping Cart </summary>
     <ul>
         <% @cart.each do |prod| %>
-            <li><%= Product.find(prod).name %></li> - <%= link_to 'remove from cart', remove_from_cart_path(prod) , method: :delete %>
+            <li><%= prod.name %></li> - <%= link_to 'remove from cart', remove_from_cart_path(prod) , method: :delete %>
         <% end %>
     </ul>
 

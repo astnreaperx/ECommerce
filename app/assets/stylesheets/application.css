@@ -12,8 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= stub "active_admin"
  */
-
 
  .container{
      padding: 10%;
