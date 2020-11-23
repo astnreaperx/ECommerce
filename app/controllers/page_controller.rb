@@ -14,8 +14,7 @@ class PageController < ApplicationController
                      Woodworker.order("id ASC").page params[:page]
                    end
 
-    time = DateTime.now.days_ago(-3).strftime("%B %d, %Y %H:%M")
-    @recent_products = Product.where("updated_at > ?", time)
+    @recent_products = Product.last(5)
   end
 
   def about
