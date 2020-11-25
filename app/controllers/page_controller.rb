@@ -1,6 +1,8 @@
 class PageController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :initialize_session
   before_action :load_cart
+
   def index
     @products = if params[:search]
                   Product.search(params[:search]).order("name ASC").page params[:page]
