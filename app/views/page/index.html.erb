@@ -5,7 +5,9 @@
     <ul>
         <% @cart.each do |prod| %>
             <li><%= prod.name %></li> - <%= link_to 'remove from cart', remove_from_cart_path(prod) , method: :delete %>
+            <%= button_to 'buy now', checkout_create_path, method: :post, params: {id: prod.id}, remote: true %>
         <% end %>
+
     </ul>
 
 </detail>
