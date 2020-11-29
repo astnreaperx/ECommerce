@@ -1,5 +1,6 @@
 class CheckoutController < ApplicationController
     before_action :authenticate_customer!
+
     def create
         # Create new stripe request
 
@@ -28,23 +29,22 @@ class CheckoutController < ApplicationController
         end
 
         @lineitems <<
-            {
-                name: "Shipping Information",
-                description: @customer.address,
-                amount: @Shipping.to_i,
-                currency: "cad",
-                quantity: 1
-            }
+        {
+            name: "Shipping Information",
+            description: @customer.address,
+            amount: @Shipping.to_i,
+            currency: "cad",
+            quantity: 1
+        }
 
         @lineitems <<
-            {
-                name: "GST",
-                description: "GST",
-                amount: @GST.to_i,
-                currency: "cad",
-                quantity: 1
-            }
-
+        {
+            name: "GST",
+            description: "GST",
+            amount: @GST.to_i,
+            currency: "cad",
+            quantity: 1
+        }
         @lineitems <<
         {
             name: "PST",
@@ -55,7 +55,7 @@ class CheckoutController < ApplicationController
         }
 
 
-        if @product.nil?
+        if @cart.nil?
             redirect_to root_path
             nil
             return
@@ -63,9 +63,9 @@ class CheckoutController < ApplicationController
 
         @session = Stripe::Checkout::Session.create(
         payment_method_types: ["card"],
-        line_items: @lineitems,
         success_url: checkout_success_url,
         cancel_url: checkout_cancel_url,
+        line_items:  @lineitems
         )
 
         respond_to do |f|
@@ -74,9 +74,7 @@ class CheckoutController < ApplicationController
     end
 
     def success
-        Order.create{
 
-        }
     end
 
     def cancel
