@@ -7,4 +7,6 @@ class Customer < ApplicationRecord
 
   has_many :orders
   belongs_to :province
+
+  validates :first_name, :last_name, :user_name, :address, presence: true
 end
