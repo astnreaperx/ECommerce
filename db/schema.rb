@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_27_003435) do
+ActiveRecord::Schema.define(version: 2020_11_29_021923) do
 
   create_table "Products", force: :cascade do |t|
     t.string "name"
@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 2020_11_27_003435) do
   create_table "provinces", force: :cascade do |t|
     t.string "name"
     t.integer "location"
-    t.integer "tax_rate"
+    t.decimal "tax_rate", precision: 5, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
