@@ -9,11 +9,10 @@ class CheckoutController < ApplicationController
             @customer = Customer.find(current_customer.id)
         end
 
-
-
         @lineitems = []
         @GST = 0
         @PST = 0
+        @Shipping = 0
         @cart.each do |lineitem|
             @lineitems <<
             {
@@ -25,7 +24,17 @@ class CheckoutController < ApplicationController
             }
             @GST += (lineitem.price * 100) * 0.05
             @PST += (lineitem.price * 100) * @customer.province.tax_rate
+            @Shipping += (lineitem.delivery_cost)
         end
+
+        @lineitems <<
+            {
+                name: "Shipping Information",
+                description: @customer.address,
+                amount: @Shipping.to_i,
+                currency: "cad",
+                quantity: 1
+            }
 
         @lineitems <<
             {
@@ -65,7 +74,9 @@ class CheckoutController < ApplicationController
     end
 
     def success
-        # The payment was successful
+        Order.create{
+
+        }
     end
 
     def cancel
