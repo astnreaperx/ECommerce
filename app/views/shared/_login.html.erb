@@ -9,3 +9,9 @@
     </li>
     <% end %>
 </div>
+
+<div>
+    <% if customer_signed_in? %>
+        <%= render  partial: "shared/shoppingcart" %>
+    <% end %>
+</div>

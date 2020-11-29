@@ -74,7 +74,11 @@ class CheckoutController < ApplicationController
     end
 
     def success
-
+        @cart = Product.find(session[:cart])
+        order = Order.create(
+            customer: current_customer
+        )
+        order.products = @cart
     end
 
     def cancel
