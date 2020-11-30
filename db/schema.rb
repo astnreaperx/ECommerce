@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_29_023836) do
+ActiveRecord::Schema.define(version: 2020_11_30_042336) do
 
   create_table "Products", force: :cascade do |t|
     t.string "name"
@@ -100,6 +100,9 @@ ActiveRecord::Schema.define(version: 2020_11_29_023836) do
     t.integer "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "payed"
+    t.string "payment_id"
+    t.string "address"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 

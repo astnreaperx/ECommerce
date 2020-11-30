@@ -60,16 +60,18 @@ class CheckoutController < ApplicationController
             nil
             return
         else
-            @cust = Customer.find(current_customer.id)
-            @order = @cust.orders.create()
-            @order.products = @cart
+
         end
 
         @session = Stripe::Checkout::Session.create(
         payment_method_types: ["card"],
-        success_url: checkout_success_url,
+        success_url: checkout_success_url + "?session_id={CHECKOUT_SESSION_ID}",
         cancel_url: checkout_cancel_url,
-        line_items:  @lineitems
+        :metadata => {
+            :region => params[:region]
+          },
+        line_items:  @lineitems,
+        address: "",
         )
 
         respond_to do |f|
@@ -78,6 +80,16 @@ class CheckoutController < ApplicationController
     end
 
     def success
+        @cust = Customer.find(current_customer.id)
+        @session = Stripe::Checkout::Session.retrieve(params[:session_id])
+        @orderid = Stripe::Checkout::Session.retrieve(@session.id)
+
+        @order = @cust.orders.create(
+            payed: true,
+            payment_id: @orderid[:id],
+            address: @cust.address
+        )
+        @order.products = @cart
 
     end
 
