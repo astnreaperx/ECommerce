@@ -60,8 +60,9 @@ class CheckoutController < ApplicationController
             nil
             return
         else
-
-
+            @cust = Customer.find(current_customer.id)
+            @order = @cust.orders.create()
+            @order.products = @cart
         end
 
         @session = Stripe::Checkout::Session.create(
@@ -77,8 +78,7 @@ class CheckoutController < ApplicationController
     end
 
     def success
-        @cust = Customer.find(current_customer.id)
-        @cust.orders.create()
+
     end
 
     def cancel
