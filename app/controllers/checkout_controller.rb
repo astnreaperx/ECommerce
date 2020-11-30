@@ -59,6 +59,9 @@ class CheckoutController < ApplicationController
             redirect_to root_path
             nil
             return
+        else
+
+
         end
 
         @session = Stripe::Checkout::Session.create(
@@ -74,11 +77,8 @@ class CheckoutController < ApplicationController
     end
 
     def success
-        @cart = Product.find(session[:cart])
-        order = Order.create(
-            customer: current_customer
-        )
-        order.products = @cart
+        @cust = Customer.find(current_customer.id)
+        @cust.orders.create()
     end
 
     def cancel
