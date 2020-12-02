@@ -68,6 +68,12 @@ end
   prod.image.attach(io: download_image, filename: "IMG#{prod.id}.jpg")
 end
 
+Province.create(
+  name:    "Manitoba" ,
+  location: "Canada",
+  tax_rate: .7
+)
+
 
 puts "Woodworkers: #{Woodworker.count}"
 puts "Customers: #{Customer.count}"
