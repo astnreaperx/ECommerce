@@ -14,7 +14,7 @@ ActiveAdmin.register Province do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
 
-  permit_params :name, :location, :tax_rate
+  permit_params :name, :location, :tax_rate, :gst, :pst, :hst
   # end
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_042336) do
+ActiveRecord::Schema.define(version: 2020_12_02_220415) do
 
   create_table "Products", force: :cascade do |t|
     t.string "name"
@@ -138,6 +138,9 @@ ActiveRecord::Schema.define(version: 2020_11_30_042336) do
     t.decimal "tax_rate", precision: 5, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "pst"
+    t.decimal "gst"
+    t.decimal "hst"
   end
 
   create_table "woodworkers", force: :cascade do |t|

@@ -30,7 +30,13 @@ Owner.create(
   owner_name: "Jerry Smith",
   website_description: "We are new here to the digital woodworking game, but we have high hopes and a high ambition to change that. Woodworking is one of those industries that has been around forever and the business model has not changed. That is where we come in, we want to change the traditional model to a semi-traditional model. We still strive for that traditional quality but are delivered in a streamlined, efficient, and convenient way. The traditional method tends to be slow and very expensive, our model will hope to eliminate the downsides of the traditional model."
 )
-
+Province.create(
+  name:    "Alberta" ,
+  location: "Canada",
+  gst: 0.00,
+  pst: 0.05,
+  hst: 0.00
+)
 # Generate 4 Categories
 categories = ["Victorian", "Modern", "Vintage", "Traditional"]
 description = ["1", "2", "3", "4"]
