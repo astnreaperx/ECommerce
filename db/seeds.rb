@@ -30,13 +30,7 @@ Owner.create(
   owner_name: "Jerry Smith",
   website_description: "We are new here to the digital woodworking game, but we have high hopes and a high ambition to change that. Woodworking is one of those industries that has been around forever and the business model has not changed. That is where we come in, we want to change the traditional model to a semi-traditional model. We still strive for that traditional quality but are delivered in a streamlined, efficient, and convenient way. The traditional method tends to be slow and very expensive, our model will hope to eliminate the downsides of the traditional model."
 )
-Province.create(
-  name:    "Alberta" ,
-  location: "Canada",
-  gst: 0.00,
-  pst: 0.05,
-  hst: 0.00
-)
+
 # Generate 4 Categories
 categories = ["Victorian", "Modern", "Vintage", "Traditional"]
 description = ["1", "2", "3", "4"]
@@ -60,6 +54,7 @@ end
 
 100.times do |p|
   furniture = Faker::House.furniture
+  puts furniture.to_s
   prod = Product.create(
     name:          Faker::Space.moon + "-" + furniture,
     description:   Faker::Lorem.paragraph,
@@ -69,74 +64,94 @@ end
     categories:    Category.order("RANDOM()").first(2)
   )
   puts prod.errors.messages
-  download_image = open(URI.open("https://source.unsplash.com/400x400/?" + Faker::House.furniture))
+  download_image = open(URI.open("https://source.unsplash.com/400x400/?" + furniture.to_s))
   prod.image.attach(io: download_image, filename: "IMG#{prod.id}.jpg")
+  sleep(2)
 end
 
 Province.create(
   name:    "Alberta" ,
-  location: "Canada",
-  tax_rate: 0.7
+  gst:  0.05,
+  pst:  0.00,
+  hst:  0.00
 )
+
 Province.create(
-  name:    "British Columbia" ,
-  location: "Canada",
-  tax_rate: 0.7
+  name: "British Columbia" ,
+  gst:  0.05,
+  pst:  0.07,
+  hst:  0.00
 )
-Province.create(
-  name:    "Manitoba" ,
-  location: "Canada",
-  tax_rate: 0.7
-)
-Province.create(
-  name:    "Manitoba" ,
-  location: "Canada",
-  tax_rate: 0.7
-)
+
 Province.create(
   name:    "Manitoba" ,
-  location: "Canada",
-  tax_rate: 0.7
+  gst:  0.05,
+  pst:  0.07,
+  hst:  0.00
+)
+
+Province.create(
+  name:    "New Brunswick" ,
+  gst:  0.00,
+  pst:  0.00,
+  hst:  0.15
+)
+
+Province.create(
+  name:    "Newfoundland and Labrador" ,
+  gst:  0.00,
+  pst:  0.00,
+  hst:  0.15
+)
+
+Province.create(
+  name:    "Northwest Territories" ,
+  gst:  0.05,
+  pst:  0.00,
+  hst:  0.00
+)
+
+Province.create(
+  name:    "Nova Scotia" ,
+  gst:  0.00,
+  pst:  0.00,
+  hst:  0.15
 )
 Province.create(
-  name:    "Manitoba" ,
-  location: "Canada",
-  tax_rate: 0.7
+  name:    "Nunavut" ,
+  gst:  0.05,
+  pst:  0.00,
+  hst:  0.00
 )
 Province.create(
-  name:    "Manitoba" ,
-  location: "Canada",
-  tax_rate: 0.7
+  name:    "Ontario" ,
+  gst:  0.00,
+  pst:  0.00,
+  hst:  0.13
 )
 Province.create(
-  name:    "Manitoba" ,
-  location: "Canada",
-  tax_rate: 0.7
+  name:    "Prince Edward Island" ,
+  gst:  0.00,
+  pst:  0.00,
+  hst:  0.15
 )
 Province.create(
-  name:    "Manitoba" ,
-  location: "Canada",
-  tax_rate: 0.7
+  name:    "Quebec" ,
+  gst:  0.05,
+  pst:  0.9975,
+  hst:  0.00
 )
 Province.create(
-  name:    "Manitoba" ,
-  location: "Canada",
-  tax_rate: 0.7
+  name:    "Sasketchewan" ,
+  gst:  0.05,
+  pst:  0.06,
+  hst:  0.00
 )
 Province.create(
-  name:    "Manitoba" ,
-  location: "Canada",
-  tax_rate: 0.7
-)
-Province.create(
-  name:    "Manitoba" ,
-  location: "Canada",
-  tax_rate: 0.7
-)
-Province.create(
-  name:    "Manitoba" ,
-  location: "Canada",
-  tax_rate: 0.7
+  name:    "Yukon" ,
+  gst:  0.05,
+  pst:  0.00,
+  hst:  0.00
 )
 
 
