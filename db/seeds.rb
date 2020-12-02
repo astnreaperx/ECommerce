@@ -9,17 +9,17 @@ require "faker"
 
 AdminUser.delete_all
 ProductCategory.delete_all
-ProductOrder.delete_all
-
 Category.delete_all
-Province.delete_all
-
-Customer.delete_all
 
 Order.delete_all
 Product.delete_all
 Woodworker.delete_all
 Owner.delete_all
+ProductOrder.delete_all
+
+Customer.delete_all
+Province.delete_all
+
 
 if Rails.env.development?
   AdminUser.create!(email: "admin@example.com", password: "password", password_confirmation: "password")
@@ -52,7 +52,6 @@ end
   )
 end
 
-# Generate 100 Products with woodworker and categories
 100.times do |p|
   furniture = Faker::House.furniture
   prod = Product.create(
@@ -69,10 +68,71 @@ end
 end
 
 Province.create(
+  name:    "Alberta" ,
+  location: "Canada",
+  tax_rate: 0.7
+)
+Province.create(
+  name:    "British Columbia" ,
+  location: "Canada",
+  tax_rate: 0.7
+)
+Province.create(
   name:    "Manitoba" ,
   location: "Canada",
-  tax_rate: .7
+  tax_rate: 0.7
 )
+Province.create(
+  name:    "Manitoba" ,
+  location: "Canada",
+  tax_rate: 0.7
+)
+Province.create(
+  name:    "Manitoba" ,
+  location: "Canada",
+  tax_rate: 0.7
+)
+Province.create(
+  name:    "Manitoba" ,
+  location: "Canada",
+  tax_rate: 0.7
+)
+Province.create(
+  name:    "Manitoba" ,
+  location: "Canada",
+  tax_rate: 0.7
+)
+Province.create(
+  name:    "Manitoba" ,
+  location: "Canada",
+  tax_rate: 0.7
+)
+Province.create(
+  name:    "Manitoba" ,
+  location: "Canada",
+  tax_rate: 0.7
+)
+Province.create(
+  name:    "Manitoba" ,
+  location: "Canada",
+  tax_rate: 0.7
+)
+Province.create(
+  name:    "Manitoba" ,
+  location: "Canada",
+  tax_rate: 0.7
+)
+Province.create(
+  name:    "Manitoba" ,
+  location: "Canada",
+  tax_rate: 0.7
+)
+Province.create(
+  name:    "Manitoba" ,
+  location: "Canada",
+  tax_rate: 0.7
+)
+
 
 
 puts "Woodworkers: #{Woodworker.count}"
