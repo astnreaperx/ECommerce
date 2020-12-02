@@ -13,6 +13,7 @@ class CheckoutController < ApplicationController
         @lineitems = []
         @GST = 0
         @PST = 0
+        @HST = 0
         @Shipping = 0
         @cart.each do |lineitem|
             @lineitems <<
@@ -23,8 +24,9 @@ class CheckoutController < ApplicationController
                 currency: "cad",
                 quantity: 1
             }
-            @GST += (lineitem.price * 100) * 0.05
-            @PST += (lineitem.price * 100) * @customer.province.tax_rate
+            @GST += (lineitem.price * 100) * @customer.province.gst
+            @PST += (lineitem.price * 100) * @customer.province.pst
+            @HST += (lineitem.price * 100) * @customer.province.hst
             @Shipping += (lineitem.delivery_cost)
         end
 
@@ -53,6 +55,14 @@ class CheckoutController < ApplicationController
             currency: "cad",
             quantity: 1
         }
+        @lineitems <<
+        {
+            name: "HST",
+            description: "PST",
+            amount: @PST.to_i,
+            currency: "cad",
+            quantity: 1
+        }
 
 
         if @cart.nil?
@@ -70,8 +80,7 @@ class CheckoutController < ApplicationController
         :metadata => {
             :region => params[:region]
           },
-        line_items:  @lineitems,
-        address: "",
+        line_items:  @lineitems
         )
 
         respond_to do |f|
