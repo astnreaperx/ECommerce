@@ -1,11 +1,15 @@
 <h3>Recent Products</h3>
 <% if @recent_products.present? %>
-    <%= render partial: '/products/product', collection: @recent_products%>%
+    <div class="columns is-multiline">
+        <%= render partial: '/products/product', collection: @recent_products%>
+    </div>
 <% end %>
 
 <h3>All Products</h3>
 <% if @products.present? %>
-    <%= render @products %>
+    <div class="columns is-multiline">
+        <%= render @products %>
+    </div>
 <% end %>
 
 

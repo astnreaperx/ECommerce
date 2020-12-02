@@ -14,15 +14,17 @@
   </head>
 
   <body>
-  <section class="section">
-    <div class="container">
-      <%= render  partial: "shared/header" %>
-      <%= render  partial: "shared/menu" %>
-      <%= render  partial: "shared/login" %>
+    <section class="section">
+      <div class="container">
 
-      <%= yield %>
-      <%= render  partial: "shared/footer" %>
+        <%= render  partial: "shared/header" %>
+        <%= render  partial: "shared/menu" %>
+        <%= render  partial: "shared/login" %>
+
+        <%= yield %>
+
+        <%= render  partial: "shared/footer" %>
+      </div>
     </section>
-    </div>
   </body>
 </html>
