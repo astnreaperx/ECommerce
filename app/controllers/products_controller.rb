@@ -3,8 +3,12 @@ class ProductsController < ApplicationController
   before_action :load_cart
 
   def index
-    @products = if params[:search]
+    @categories = Category.all
+    @products = if params[:search] && params[:categories].nil?
       Product.search(params[:search]).order("name ASC").page params[:page]
+    elsif params[:categories].present?
+      cat = Category.find(params[:categories])
+      @products = cat.products.search(params[:search]).order("name ASC").page params[:page]
     else
       Product.order("id ASC").page params[:page]
     end

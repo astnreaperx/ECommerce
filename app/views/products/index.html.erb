@@ -1,6 +1,9 @@
 <%= form_tag(products_path ,local: true, method: "get") do %>
   <%= label_tag(:search, "Search for:") %>
   <%= text_field_tag(:search) %>
+
+  <%= label_tag(:category, "category") %>
+  <%= select_tag(:categories, options_from_collection_for_select(@categories, "id", "name"), include_blank: true) %>
   <%= submit_tag("Search") %>
 <% end %>
 

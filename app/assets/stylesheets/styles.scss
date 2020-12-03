@@ -8,6 +8,9 @@ body{
         margin: auto;
     }
 }
+.navbar .ul{
+    display: flex;
+}
 
 .navbar ::marker {
     color: blue;

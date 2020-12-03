@@ -1,6 +1,7 @@
 class Woodworker < ApplicationRecord
   # user_name, first_name, last_name, shop_name, address
-  max_paginates_per 20
+  validates :user_name, uniqueness: true
+  validates :user_name, :first_name, :last_name, :shop_name, :address, presence: true
 
   has_many :products
 
