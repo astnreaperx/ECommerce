@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   def index
     @categories = Category.all
-    @products = if params[:search] && params[:categories].nil?
+    @products = if params[:search] && params[:categories].nil? == false
       Product.search(params[:search]).order("name ASC").page params[:page]
     elsif params[:categories].present?
       cat = Category.find(params[:categories])
