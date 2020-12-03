@@ -1,0 +1,31 @@
+$base-color: #e8e6fc;
+
+body{
+    filter: chroma($base-color);
+
+    .section{
+        width: 80%;
+        margin: auto;
+    }
+}
+
+.navbar ::marker {
+    color: blue;
+    font-size: 0em;
+  }
+.navbar .active{
+    color:yellow;
+}
+
+.navbar .noactive{
+    margin:10px + 2px;
+    list-style: none;
+}
+
+.navbar-brand{
+    padding:10px
+}
+
+.header .navbar .li{
+    margin:10px;
+}

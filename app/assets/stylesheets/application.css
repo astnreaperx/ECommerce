@@ -14,8 +14,4 @@
  *= require_self
  *= stub "active_admin"
  */
-
- .container{
-     padding: 10%;
-     padding-top: 2%;
- }
+ @import "bulma";
